@@ -1,0 +1,76 @@
+﻿@page "/Companies/Create"
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+
+@inject NavigationManager Navigation
+
+
+<EditForm Model="Company" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:75%">
+
+        <div class="card-body mx-auto" style="width:72%; min-width:55%">
+
+            <h3 class="card-title">Create new project</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Fill in the fields to create a new Company</h6>
+
+            <div class="form-group">
+                <label class="control-label">Company Name</label>
+                <InputText @bind-Value="Company.companyName" class="form-control" />
+                <ValidationMessage For="@(() => Company.companyName)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Company Description</label>
+                <InputText @bind-Value="Company.companyDescription" class="form-control" />
+                <ValidationMessage For="@(() => Company.companyDescription)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Date Created</label>
+                <InputDate @bind-Value="Company.DateCreated" class="form-control" />
+                <ValidationMessage For="@(() => Company.DateCreated)" />
+            </div>
+
+            <br />
+
+            <a class="btn btn-secondary ml-2" href="/Companies">Back</a>
+
+            <button type="submit" class="btn btn-primary">
+                Create new Company
+            </button>
+        </div>
+    </div>
+
+</EditForm>
+
+
+@code {
+    private Company Company { get; set; } = new Company { DateCreated = DateTime.Today }; //Create instance of company and set create date to today
+
+
+    private async void HandleValidSubmit() //Execute on 'submit button' press
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("/api/companies", Company);
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var company = JsonConvert.DeserializeObject<Company>(content);
+
+            // Navigation.NavigateTo($"projects/edit/{project.Id}"); //Navigate to new project edit
+
+            Navigation.NavigateTo("/companies");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Company index page exception caught: " + e);
+        }
+    }
+}

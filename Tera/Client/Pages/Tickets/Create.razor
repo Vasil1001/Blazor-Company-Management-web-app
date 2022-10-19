@@ -1,0 +1,135 @@
+﻿@page "/Tickets/Create"
+
+@attribute [Authorize]
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+@inject NavigationManager Navigation
+
+
+
+<EditForm Model="Ticket" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:75%">
+
+        <div class="card-body mx-auto" style="width:72%; min-width:55%">
+
+            <h3 class="card-title">Create new ticket</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Fill in the fields to create a new ticket</h6>
+
+            <div class="form-group">
+                <label class="control-label">Ticket Name</label>
+                <InputText @bind-Value="Ticket.Name" class="form-control" />
+                <ValidationMessage For="@(() => Ticket.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Ticket Description</label>
+                <InputText @bind-Value="Ticket.Description" class="form-control" />
+                <ValidationMessage For="@(() => Ticket.Description)" />
+            </div>
+
+            <div class="form-group">
+                <label for="statusInput">Status</label>
+                <InputSelect class="form-control" id="statusInput" @bind-Value="Ticket.TicketStatus">
+
+                    @{
+                        <option disabled value="Select">Select status</option>
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Closed">Closed</option>
+
+                        if (Ticket.TicketStatus != "Closed")
+                        {
+                            Ticket.ClosedDate = null;
+                        }
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label for="compSelect">Assign to User</label>
+                <InputSelect class="form-control" id="compSelect" @bind-Value="Ticket.UserId">
+                    <option disabled value="Select">Assign to User</option>
+
+                    @foreach (var User in Users)
+                    {
+                        <option value="@User.UserId">@User.FirstName @User.LastName</option>
+                    }
+
+
+
+                </InputSelect>
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Created on</label>
+                <InputDate @bind-Value="Ticket.TicketCreatedDate" class="form-control" />
+                <ValidationMessage For="@(() => Ticket.TicketCreatedDate)" />
+            </div>
+
+            <br />
+
+            <a class="btn btn-secondary ml-2" href="/Tickets">Back</a>
+
+            <button type="submit" class="btn btn-primary">
+                Create new Ticket
+            </button>
+        </div>
+
+    </div>
+
+</EditForm>
+
+
+@code {
+    private Ticket Ticket { get; set; } = new Ticket { TicketCreatedDate = DateTime.Today };
+
+    private List<User> Users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Users = await Http.GetFromJsonAsync<List<User>>("/api/Users");
+
+
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Companies index page exception caught: " + e);
+        }
+    }
+
+    private async void HandleValidSubmit()
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("/api/Tickets", Ticket);
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+            var ticket = JsonConvert.DeserializeObject<Ticket>(content);
+
+            // Navigation.NavigateTo($"tickets/edit/{ticket.Id}"); //Navigate to new ticket edit
+
+            Navigation.NavigateTo("/tickets");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+
+    }
+}

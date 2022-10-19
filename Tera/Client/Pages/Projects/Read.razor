@@ -1,0 +1,117 @@
+﻿@page "/Projects/details/{Id:guid}"
+
+@attribute [Authorize]
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+@inject NavigationManager Navigation
+
+<div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:45%">
+    <div class="card-body mx-auto" style="width:67%; min-width:55%">
+        <h3 class="card-title">Details for @Project.Name</h3>
+        <h6 class="card-subtitle mb-2 text-muted">View further details on selected uroject</h6>
+        <br />
+
+        <ul class="list-group">
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">
+                    Project Name
+                </h5>
+
+                <h5 class="mb-1">
+                    @Project.Name
+                </h5>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                <h5 class="mb-1">Status </h5>
+                <h5 class="mb-1">
+                    @Project.ProjectStatus
+                </h5>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+                <h5 class="mb-1">Assigned to company </h5>
+                @foreach (var Company in from Company in Companies where Company.CompanyId == Project.CompanyId select Company)
+                {
+                    <h5 class="mb-1">
+                        @Company.companyName
+                    </h5>
+                }
+
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">
+                    Project Description <br /><br /> @Project.Description
+                </h5>
+            </li>
+
+            <li class="list-group-item">
+                <h5 class="mb-1"> Created On <br /><br /> @Project.DateCreated.ToShortDateString()</h5>
+            </li>
+
+            <li class="list-group-item">
+                @if (Project.ProjectStatus != "Closed")
+                {
+                    <h5 class="mb-1">Closed on <br /><br /></h5> <h5 class="mb-1">
+                        Stil in progress
+                    </h5>
+                }
+                else
+                {
+                    <h5 class="mb-1">Closed on <br /><br /></h5> <h5 class="mb-1">
+                        @Project.ClosedDate?.ToShortDateString()
+                    </h5>
+
+                }
+
+            </li>
+
+        </ul>
+        <br />
+
+        <a class="btn btn-secondary" href="/Projects">Back</a>
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private List<Project> Projects = new List<Project>();
+    private Project Project { get; set; } = new Project();
+
+    private Company Company { get; set; } = new Company();
+    private List<Company> Companies = new List<Company>();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Project = await Http.GetFromJsonAsync<Project>($"/api/Projects/{Id}");
+            Projects = await Http.GetFromJsonAsync<List<Project>>("/api/Projects");
+
+            Companies = await Http.GetFromJsonAsync<List<Company>>("/api/Companies");
+            Company = await Http.GetFromJsonAsync<Company>($"/api/Companies/{Id}");
+
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Project index page exception caught: " + e);
+        }
+
+
+    }
+
+
+}

@@ -1,0 +1,141 @@
+﻿@page "/Projects/edit/{Id:guid}"
+
+@attribute [Authorize]
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+
+@inject NavigationManager Navigation
+
+<EditForm Model="Project" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+
+    <div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:75%">
+
+        <div class="card-body mx-auto" style="width:72%; min-width:55%">
+
+            <h3 class="card-title">Edit project details</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Modify values of a project</h6>
+            <br />
+
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <InputText @bind-Value="Project.Name" class="form-control" />
+                <ValidationMessage For="@(() => Project.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Description</label>
+                <InputText @bind-Value="Project.Description" class="form-control" />
+                <ValidationMessage For="@(() => Project.Description)" />
+            </div>
+
+            <div class="form-group">
+                <label for="statusInput">Status</label>
+                <InputSelect class="form-control" id="statusInput" @bind-Value="Project.ProjectStatus">
+                    @{
+                        <option disabled value="Select">Select status</option>
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Closed">Closed</option>
+
+                        if (Project.ProjectStatus == "Closed")
+                        {
+                            Project.ClosedDate = DateTime.Today;
+                        }
+                        else
+                        {
+                            Project.ClosedDate = null;
+                        }
+                    }
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label for="compSelect">Assign to Company</label>
+                <InputSelect class="form-control" id="compSelect" @bind-Value="Project.CompanyId">
+                    <option disabled value="Select">Select company</option>
+
+                    @foreach (var Company in Companies)
+                    {
+                        <option value="@Company.CompanyId">@Company.companyName</option>
+                    }
+
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Created on</label>
+                <InputDate @bind-Value="Project.DateCreated" class="form-control" />
+                <ValidationMessage For="@(() => Project.DateCreated)" />
+            </div>
+
+            <br />
+
+            <a class="btn btn-secondary ml-1" href="/Projects">Back</a>
+
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+
+        </div>
+    </div>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private Company Company { get; set; } = new Company();//
+
+    private List<Company> Companies = new List<Company>();//
+
+    private Project Project { get; set; } = new Project();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Companies = await Http.GetFromJsonAsync<List<Company>>("/api/Companies"); //fetch companies to assign/input select
+
+            Project = await Http.GetFromJsonAsync<Project>($"/api/Projects/{Id}"); //fetch project by id
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Project index page exception caught: " + e);
+        }
+
+    }
+
+    private async void HandleValidSubmit()
+    {
+        try
+        {
+            var response = await Http.PutAsJsonAsync($"/api/Projects/{Project.ProjectId}", Project);
+
+            response.EnsureSuccessStatusCode();
+            Navigation.NavigateTo("/Projects");
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Project index page exception caught: " + e);
+        }
+
+    }
+}

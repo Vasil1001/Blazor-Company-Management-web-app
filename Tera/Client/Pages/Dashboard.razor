@@ -1,0 +1,167 @@
+﻿@page "/"
+@inject HttpClient Http
+@inject HttpClient httpClient
+    <!-- Main big div container with shadow -->
+    <div class="container w-auto shadow p-3 ml-3 mr-3 mt-4 bg-white rounded-lg mx-auto">
+
+        <!-- Top rectangle card with title info inside big container 75% width -->
+        <div class="card bg-light ml-5 mr-5 mt-3 shadow p-3 mb-5 bg-white rounded-lg mx-auto" style="width:75%">
+            <div class="card-body">
+                <h3 class="card-title">Dashboard</h3>
+                <br />
+                <h6 class="card-subtitle mb-2 text-muted">Actions overview</h6>
+                <p class="card-text">Access main pages from here</p>
+            </div>
+        </div>
+
+        <!-- Next big rectangle card with that holds square data cards 85% width -->
+        <div class="mt-4 ml-4 mr-4 mx-auto" style="width:85%">
+
+            <!-- Row that holds 3 square data cards -->
+            <div class="row">
+
+                <!-- First col/square card with Tickets data on first row -->
+                <div class="col-md-4 col-xs-4 col-md-offset-2 col-xs-offset-2">
+
+                    <!-- add href to card to redirect on click -->
+                    <a class="card-block stretched-link text-decoration-none" href="/Tickets">
+
+                        <!-- square div with 3 ticket data divs -->
+                        <div class="ml-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 200px; min-height: 300px">
+                            <h5 class="card-title">Tickets</h5>
+                            <h7 class="card-subtitle mb-4 text-muted">User assigned tickets</h7>
+
+                            <hr />
+
+                            <p class="card-text mt-2">Total Tickets: @Tickets.Count()</p>
+
+                            <div class="col mt-2">
+                                @{var ocount = 0;
+                                    foreach (var Ticket in Tickets)
+                                    {
+                                        if (Ticket.TicketStatus == "Open" | Ticket.TicketStatus == "In Progress")
+                                        {
+                                            ocount += 1;
+                                        }
+                                    }
+                                    <p class="card-text mb-2">Active Tickets: @ocount</p>
+                                }
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var ccount = 0;
+                                    foreach (var Ticket in Tickets)
+                                    {
+                                        if (Ticket.TicketStatus == "Closed")
+                                        {
+                                            ccount += 1;
+                                        }
+                                    }
+                                    <p class="card-text mb-2">Closed Tickets: @ccount</p>
+                                }
+                            </div>
+                            <br />
+                            <br />
+                            <h8 class="card-subtitle mt-5 text-muted">Redirect to tickets page</h8>
+
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Second col/square card with projects data on first row-->
+                <div class="col-md-4 col-xs-4">
+                    <a class="card-block stretched-link text-decoration-none" href="/Projects">
+
+                        <!-- second square div with 3 project data divs -->
+                        <div class="shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 300px">
+                            <h5 class="card-title">Projects</h5>
+                            <h6 class="card-subtitle mb-4 text-muted">User assigned Projects</h6>
+                            <hr />
+
+                            <p class="card-text mt-2">Total Projects: @Projects.Count()</p>
+
+
+                            <div class="col mt-2">
+                                @{var orcount = 0;
+                                    foreach (var Project in Projects)
+                                    {
+                                        if (Project.ProjectStatus == "Open" | Project.ProjectStatus == "In Progress")
+                                        {
+                                            orcount += 1;
+                                        }
+                                    }
+                                    <p class="card-text mb-2">Active Projects: @orcount</p>
+                                }
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var cceount = 0;
+                                    foreach (var Project in Projects)
+                                    {
+                                        if (Project.ProjectStatus == "Closed")
+                                        {
+                                            cceount += 1;
+                                        }
+                                    }
+                                    <p class="card-text mb-2">Closed Projects: @cceount</p>
+                                }
+                            </div>
+                            <br />
+                            <br />
+                            <h8 class="card-subtitle mt-5 text-muted">Redirect to projects page</h8>
+
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Third col/square card with projects data on first row-->
+                <div class="col-md-4 col-xs-4 ">
+                    <a class="card-block stretched-link text-decoration-none" href="/Companies">
+                        <!-- third square div with 1 company data div -->
+                        <div class="mr-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 300px">
+                            <h5 class="card-title">Companies </h5>
+                            <h6 class="card-subtitle mb-4 text-muted">Companies on Tera</h6>
+                            <hr />
+                            <p class="card-text mt-2">Total Companies: @Companies.Count()</p>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h8 class="card-subtitle mt-5 text-muted">Redirect to companies page</h8>
+                        </div>
+                    </a>
+                </div>
+
+            </div><!-- End of first row -->
+
+        </div>
+    </div>
+
+    @code {
+        private List<Project> Projects = new List<Project>(); //fetch list of entities to get overview data
+        private List<Ticket> Tickets = new List<Ticket>();
+        private List<Company> Companies = new List<Company>();
+
+        public Guid Id { get; set; }
+
+        private Project Project { get; set; } = new Project();
+
+
+        protected override async Task OnInitializedAsync()
+        {
+            try
+            {
+                Projects = await Http.GetFromJsonAsync<List<Project>>("/api/Projects"); //TicketsController async methods to get
+                Tickets = await Http.GetFromJsonAsync<List<Ticket>>("/api/Tickets");
+                Companies = await Http.GetFromJsonAsync<List<Company>>("/api/Companies");
+            }
+            catch (AccessTokenNotAvailableException exception)
+            {
+                exception.Redirect();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ticket index page exception caught: " + e);
+            }
+        }
+    }

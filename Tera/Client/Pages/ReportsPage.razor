@@ -1,0 +1,305 @@
+﻿@page "/ReportsPage"
+@inject HttpClient Http
+@inject HttpClient httpClient
+    <!-- Main container div -->
+<div class="container w-auto shadow p-3 ml-3 mr-3 mt-4 bg-white rounded-lg mx-auto">
+
+    <!-- Top rectangle card with title info inside big container 75% width -->
+    <div class="card bg-light ml-5 mr-5 mt-3 shadow p-3 mb-5 bg-white rounded-lg mx-auto" style="width:75%">
+        <div class="card-body">
+            <h3 class="card-title">Report Page</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Total tickets and projects data</h6>
+        </div>
+    </div>
+
+    <!-- Next big rectangle card that holds rows and columns with data -->
+    <div class="mt-4 ml-4 mr-4 mx-auto" style="width:83%">
+
+        <div class="row">
+
+            <div class="col-md-4 col-xs-4 col-md-offset-2 col-xs-offset-2">
+                <a class="card-block stretched-link text-decoration-none" href="/Tickets">
+                    <div class="ml-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                        <h5 class="card-title">Tickets</h5>
+                        <h6 class="card-subtitle mb-4 text-muted">User assigned tickets</h6>
+                        <hr />
+
+                        <p class="card-text mt-2">Total Tickets: @Tickets.Count()</p>
+
+                        <div class="col mt-2">
+                            @{var activetcount = 0;
+                                foreach (var Ticket in Tickets)
+                                {
+                                    if (Ticket.TicketStatus == "Open" | Ticket.TicketStatus == "In Progress")
+                                    {
+                                        activetcount += 1;
+                                    }
+                                }
+                                <p class="card-text mb-2">Active Tickets: @activetcount</p>
+                            }
+                        </div>
+
+
+
+                        <div class="col mt-2">
+                            @{var closedtcount = 0;
+                                foreach (var Ticket in Tickets)
+                                {
+                                    if (Ticket.TicketStatus == "Closed")
+                                    {
+                                        closedtcount += 1;
+                                    }
+                                }
+                                <p class="card-text mb-2">Closed Tickets: @closedtcount</p>
+                            }
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-xs-4">
+                <a class="card-block stretched-link text-decoration-none" href="/Projects">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                        <h5 class="card-title">Projects</h5>
+                        <h6 class="card-subtitle mb-4 text-muted">User assigned Projects</h6>
+                        <hr />
+
+                        <p class="card-text mt-2">Total Projects: @Projects.Count()</p>
+
+                        <div class="col mt-2">
+                            @{var opcount = 0;
+                                foreach (var Project in Projects)
+                                {
+                                    if (Project.ProjectStatus == "Open" | Project.ProjectStatus == "In Progress")
+                                    {
+                                        opcount += 1;
+                                    }
+                                }
+                                <p class="card-text mb-2">Active Projects: @opcount</p>
+                            }
+                        </div>
+
+                        <div class="col mt-2">
+                            @{var cpcount = 0;
+                                foreach (var Project in Projects)
+                                {
+                                    if (Project.ProjectStatus == "Closed")
+                                    {
+                                        cpcount += 1;
+                                    }
+                                }
+                                <p class="card-text mb-2">Closed Projects: @cpcount</p>
+                            }
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-xs-4 ">
+                <a class="card-block stretched-link text-decoration-none" href="/Companies">
+                    <div class="mr-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                        <h5 class="card-title">Companies </h5>
+                        <h6 class="card-subtitle mb-4 text-muted">Companies working with Tera</h6>
+                        <hr />
+                        <p class="card-text mt-2">Total Companies: @Companies.Count()</p>
+
+
+
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Row that holds a large card for Ticket data -->
+        <div class="row">
+
+            <div class="card bg-light ml-5 mr-5 mt-1 shadow p-3 mb-5 bg-white rounded-lg mx-auto" style="width:86%">
+                <div class="card-body">
+                    <h5 class="card-title">Tickets</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Ticket activity overview</h6>
+
+                    <hr />
+
+                    <br />
+                    <div class="ml-4 mx-auto" style="width:60%">
+                        <h5 class="text-left">All user created tickets data:</h5>
+                        <br />
+                        <div class="row ">
+
+                            <div class="col mt-2">
+                                <h5 class="text-left">Total Tickets: @Tickets.Count()</h5>
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var otcount = 0;
+                                    foreach (var Ticket in Tickets)
+                                    {
+                                        if (Ticket.TicketStatus == "Open" | Ticket.TicketStatus == "In Progress")
+                                        {
+                                            otcount += 1;
+                                        }
+                                    }
+                                    <h5 class="text-left">Active Tickets: @otcount</h5>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col mt-2">
+                                @{var ctcount = 0;
+                                    foreach (var Ticket in Tickets)
+                                    {
+                                        if (Ticket.TicketStatus == "Closed")
+                                        {
+                                            ctcount += 1;
+                                        }
+                                    }
+                                    <h5 class="text-left">Closed Tickets: @ctcount</h5>
+                                }
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var ttqcount = 0;
+                                    foreach (var Ticket in Tickets)
+                                    {
+                                        if (Ticket.TicketStatus == "Testing")
+                                        {
+                                            ttqcount += 1;
+                                        }
+                                    }
+                                    <h5 class="card-text mb-2">Tickets in testing: @ttqcount</h5>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row that holds large card for Project data -->
+            <div class="card bg-light ml-5 mr-5 mt-3 shadow p-3 mb-5 bg-white rounded-lg mx-auto" style="width:86%">
+                <div class="card-body">
+                    <h5 class="card-title">Projects</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Project activity overview</h6>
+
+                    <hr />
+
+                    <br />
+                    <div class="ml-4 mx-auto" style="width:60%">
+                        <h5 class="text-left">Total created projects data:</h5>
+                        <br />
+                        <div class="row ">
+
+                            <div class="col mt-2">
+                                <h5 class="text-left">Total Projects @Projects.Count()</h5>
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var openpcount = 0;
+                                    foreach (var Project in Projects)
+                                    {
+                                        if (Project.ProjectStatus == "Open")
+                                        {
+                                            openpcount += 1;
+                                        }
+                                    }
+                                    <h5 class="text-left">Active Projects: @openpcount</h5>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col mt-2">
+                                @{var closedpcount = 0;
+                                    foreach (var Project in Projects)
+                                    {
+                                        if (Project.ProjectStatus == "Closed")
+                                        {
+                                            closedpcount += 1;
+                                        }
+                                    }
+                                    <h5 class="text-left">Closed Projects: @closedpcount</h5>
+                                }
+                            </div>
+
+                            <div class="col mt-2">
+                                @{var ptcount = 0;
+                                    foreach (var Project in Projects)
+                                    {
+                                        if (Project.ProjectStatus == "Testing")
+                                        {
+                                            ptcount += 1;
+                                        }
+                                    }
+                                    <h5 class="card-text mb-2">Projects in testing: @ptcount</h5>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+
+            <!-- 3 Columns with Pie chart data - UNFINISHED  https://www.chartjs.org/ -->
+            <div class="col-md-4 col-xs-4  col-md-offset-2 col-xs-offset-2">
+                <div class="ml-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                    <h5 class="card-title">Tickets Pie chart</h5>
+                    <h6 class="card-subtitle mb-3 text-muted">User assigned tickets</h6>
+                    <p class="card-text mt-2">Open Tickets: 5</p>
+                    <p class="card-text mb-2">Closed Tickets: 5</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+                <div class="shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                    <h5 class="card-title">Tickets Pie chart</h5>
+                    <h6 class="card-subtitle mb-3 text-muted">User assigned tickets</h6>
+                    <p class="card-text mt-2">Open Tickets: 5</p>
+                    <p class="card-text mb-2">Closed Tickets: 5</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+                <div class="mr-5 shadow-lg p-3 mb-5 bg-white rounded-lg" style="min-width: 180px; min-height: 235px">
+                    <h5 class="card-title">Tickets Pie chart</h5>
+                    <h6 class="card-subtitle mb-3 text-muted">User assigned tickets</h6>
+                    <p class="card-text mt-2">Open Tickets: 5</p>
+                    <p class="card-text mb-2">Closed Tickets: 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private List<Project> Projects = new List<Project>();
+    private List<Ticket> Tickets = new List<Ticket>();
+    private List<Company> Companies = new List<Company>();
+
+    public Guid Id { get; set; }
+
+    private Project Project { get; set; } = new Project();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Projects = await Http.GetFromJsonAsync<List<Project>>("/api/Projects");
+            Tickets = await Http.GetFromJsonAsync<List<Ticket>>("/api/Tickets");
+            Companies = await Http.GetFromJsonAsync<List<Company>>("/api/Companies");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+    }
+}

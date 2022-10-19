@@ -1,0 +1,84 @@
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\source\repos\Tera\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Enterprise App Dev C#\Seminar Tutorials\Tutorial 9 Controller\TeraT9\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\EADCW\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\Backups\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\v10 Final\TeraNoPublishBare\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll
+C:\Users\Vasil\Desktop\CW2 UPLOAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.deps.json
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.dll
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\bin\Debug\net5.0\Tera.Shared.pdb
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.AssemblyReference.cache
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfoInputs.cache
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.AssemblyInfo.cs
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.csproj.CoreCompileInputs.cache
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.dll
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\refint\Tera.Shared.dll
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\Tera.Shared.pdb
+C:\Users\vasko\Desktop\Upload GitHub\EAD\Cw2_w1740051_VasilDzhakov\Tera\Shared\obj\Debug\net5.0\ref\Tera.Shared.dll

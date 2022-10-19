@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Tickets\Create.razor" />
+    <None Include="Pages\Tickets\Delete.razor" />
+    <None Include="Pages\Tickets\Edit.razor" />
+    <None Include="Pages\Tickets\Index.razor" />
+    <None Include="Pages\Tickets\Read.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ChartJs.Blazor" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.12" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="5.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Tera.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

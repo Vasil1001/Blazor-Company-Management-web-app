@@ -1,0 +1,106 @@
+﻿@page "/Projects/delete/{Id:guid}"
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+
+@inject NavigationManager Navigation
+
+<EditForm Model="Project" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:45%">
+
+        <div class="card-body mx-auto" style="width:67%; min-width:80%">
+
+            <h3>Please confirm you want to delete the following project?</h3>
+            <br />
+            <ul class="list-group">
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h5 class="mb-1">
+                        Project Name
+                    </h5>
+
+                    <h5 class="mb-1">
+                        @Project.Name
+                    </h5>
+                </li>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <h5 class="mb-1">
+                        Project Status
+                        <br /> <br />@Project.ProjectStatus
+                    </h5>
+
+                </li>
+
+                <li class="list-group-item ">
+                    <h5 class="mb-1">
+                        Project Description <br /> <br />@Project.Description
+                    </h5>
+
+                </li>
+
+            </ul>
+            <br />
+            <a class="btn btn-secondary ml-2" href="/Projects">Back</a>
+
+            <button type="submit" class="btn btn-danger">
+                <i href="/Projects"></i>Delete project
+            </button>
+
+        </div>
+    </div>
+
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private Project Project { get; set; } = new Project();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+
+            Project = await Http.GetFromJsonAsync<Project>($"/api/Projects/{Id}"); //Get the project from id in index
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Project index page exception caught: " + e);
+        }
+
+    }
+
+    private async void HandleValidSubmit()
+    {
+        try
+        {
+            await Http.DeleteAsync($"/api/Projects/{Id}");
+
+            var response = await Http.PutAsJsonAsync($"/api/Projects/{Project.ProjectId}", Project);
+            response.EnsureSuccessStatusCode();
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+        Navigation.NavigateTo("/projects"); //after action go back to index page
+    }
+
+}

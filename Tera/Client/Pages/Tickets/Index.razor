@@ -1,0 +1,154 @@
+﻿@page "/Tickets"
+@using Tera.Shared;
+@inject HttpClient Http
+@inject HttpClient httpClient
+
+<div class="shadow p-3 ml-3 mr-3 mb-3 bg-white rounded-lg">
+    <div class="card-body mx-auto" style="width:75.1%">
+        <h3 class="card-title">Tickets page</h3>
+        <br />
+        <h6 class="card-subtitle mb-2 text-muted">Manage tickets using the user available actions</h6>
+        <p class="card-text">Create, view, edit and delete tickets</p>
+    </div>
+</div>
+
+<div class="shadow p-3 ml-3 mt-3 mr-3 mb-3 bg-white rounded-lg">
+
+    <div class="mx-auto mt-1" style="width:75.4%">
+        <div class="row">
+            <div class="col mt-1">
+                <h3 class="text-left">Tickets tab</h3>
+            </div>
+
+            <div class="col mt-2">
+                <h5 class="text-left">Total Tickets: @Tickets.Count()</h5>
+            </div>
+
+            <div class="col mt-2">
+                @{var ocount = 0;
+                    foreach (var Ticket in Tickets)
+                    {
+                        if (Ticket.TicketStatus != "Closed")
+                        {
+                            ocount += 1;
+                        }
+                    }
+                    <h5 class="text-left">Active Tickets: @ocount</h5>
+                }
+            </div>
+
+            <div class="col">
+                <div class="text-right">
+                    <p>
+                        <a class="btn btn-dark " href="/Tickets/create"><i class="oi oi-plus" aria-hidden="true" style="color:white"></i>&nbsp;&nbsp;&nbsp;Create new Ticket</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="table-responsive rounded-lg">
+
+            <table class="table table-hover table-bordered rounded text-center mx-auto" style="width:74.8%">
+
+                <thead class="thead-dark">
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Assigned to user</th>
+                        <th>Created on</th>
+                        <th>Completed on</th>
+                        <th>Expand</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var ticket in Tickets)
+
+                    {
+                        <tr>
+                            <td>
+                                @ticket.Name
+                            </td>
+                            <td>
+                                <p>@ticket.TicketStatus</p>
+                            </td>
+                            <td>
+                                @foreach (var User in from User in Users where User.UserId == ticket.UserId select User)
+                                {
+                                    @User.FirstName;
+                                }
+                            </td>
+
+                            <td class="text-center" style="width: 10%">
+
+                                <p>@ticket.TicketCreatedDate.ToShortDateString()</p>
+                            </td>
+                            <td class="text-center" style="width: 10%">
+
+                                <p>@ticket.ClosedDate?.ToShortDateString()</p>
+                            </td>
+
+                            <td class="text-center" style="width: 3%">
+                                <a class="btn" href="/Tickets/details/@ticket.Id">
+                                    <i class="oi oi-menu" aria-hidden="true" style="color:black"></i>
+                                </a>
+                            </td>
+
+                            <td class="text-center" style="width: 3%">
+
+                                <a class="btn" href="/Tickets/edit/@ticket.Id">
+                                    <i class="oi oi-pencil" aria-hidden="true" style="color:black"></i>
+                                </a>
+
+                            </td>
+                            <td class="text-center" style="width: 3%">
+                                <a class="btn" href="/Tickets/delete/@ticket.Id">
+                                    <i class="oi oi-trash" aria-hidden="true" style="color:red"></i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+@code {
+    private List<Ticket> Tickets = new List<Ticket>();
+    private List<User> Users = new List<User>();
+
+    private User User { get; set; } = new User();
+    private Ticket Ticket { get; set; } = new Ticket();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Tickets = await Http.GetFromJsonAsync<List<Ticket>>("/api/Tickets");
+            Users = await Http.GetFromJsonAsync<List<User>>("/api/Users");
+
+            User = await Http.GetFromJsonAsync<User>($"/api/Users/{Ticket.UserId}");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+    }
+
+}

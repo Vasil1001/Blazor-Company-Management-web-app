@@ -1,0 +1,97 @@
+﻿@page "/Users/edit/{Id:guid}"
+
+@attribute [Authorize]
+
+@inject HttpClient Http
+@inject HttpClient httpClient
+
+@inject NavigationManager Navigation
+<h1>Edit user</h1>
+
+<EditForm Model="User" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="shadow-sm p-3 mt-3 ml-3 mr-3 mb-3 bg-white rounded-lg mx-auto" style="width:75%">
+
+        <div class="card-body mx-auto" style="width:72%; min-width:55%">
+
+            <h3 class="card-title">Edit user details</h3>
+            <h6 class="card-subtitle mb-2 text-muted">Modify values of a user</h6>
+            <br />
+
+            <div class="form-group">
+                <label class="control-label">First Name</label>
+                <InputText @bind-Value="User.FirstName" class="form-control" />
+                <ValidationMessage For="@(() => User.FirstName)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Last Name</label>
+                <InputText @bind-Value="User.LastName" class="form-control" />
+                <ValidationMessage For="@(() => User.LastName)" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <InputText @bind-Value="User.Email" class="form-control" />
+                <ValidationMessage For="@(() => User.Email)" />
+            </div>
+            <br />
+
+
+            <a class="btn btn-secondary ml-2" href="/Users">Back</a>
+
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+        </div>
+    </div>
+
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private User User { get; set; } = new User();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            User = await Http.GetFromJsonAsync<User>($"/api/Users/{Id}");
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+
+    }
+
+    private async void HandleValidSubmit()
+    {
+        try
+        {
+            var response = await Http.PutAsJsonAsync($"/api/Users/{Id}", User);
+            response.EnsureSuccessStatusCode();
+            Navigation.NavigateTo("/Users");
+        }
+
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("Ticket index page exception caught: " + e);
+        }
+
+    }
+}
