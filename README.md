@@ -1,7 +1,6 @@
 # Blazor-Company-Management-web-app <a name="readme-top"></a> 
 A company project management application built with C# ASP.NET Core Blazor for Enterprise Application Development module at University of Westminster.
 
-#### Built With C# ASP NET Blazor
 [![C#][C#.com]][C#-url] [![.NET][.NET.com]][.NET-url] [![Bootstrap][Bootstrap.com]][Bootstrap-url] [![VS][VS.com]][VS-url] 
 
 <!-- TABLE OF CONTENTS -->
