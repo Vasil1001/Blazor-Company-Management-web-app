@@ -23,7 +23,6 @@ A company project management application built with C# ASP.NET Core Blazor for E
     <li><a href="#general-info">General Info</a></li>
     <li><a href="#setup">Setup</a></li>
     <li><a href="#further-requirements">Further Requirements</a></li>
-    <li><a href="#project-status">Project Status</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#improvement">Room for Improvement</a></li>
     <li><a href="#project-status">Status</a></li>
